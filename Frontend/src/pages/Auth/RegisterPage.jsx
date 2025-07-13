@@ -5,10 +5,25 @@ import { useAuth } from '../../context/AuthContext';
 
 const RegisterPage = () => {
   const [error, setError] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const { register } = useAuth();
   const navigate = useNavigate();
 
+  const handleValidationErrors = (errors) => {
+    setUsernameError(errors.username || '');
+    setEmailError(errors.email || '');
+    setPasswordError(errors.password || '');
+  };
+
   const handleRegister = async (username, email, password) => {
+    // Clear previous API errors and validation errors
+    setError('');
+    handleValidationErrors({});
+    // Clear previous API errors and validation errors
+    setError('');
+    handleValidationErrors({});
     const success = await register(username, email, password);
     if (success) {
       navigate('/login'); // Redirect to login after successful registration
@@ -19,7 +34,7 @@ const RegisterPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <RegisterForm onSubmit={handleRegister} error={error} />
+      <RegisterForm onSubmit={handleRegister} error={error} usernameError={usernameError} emailError={emailError} passwordError={passwordError} onValidationErrors={handleValidationErrors} />
     </div>
   );
 };
