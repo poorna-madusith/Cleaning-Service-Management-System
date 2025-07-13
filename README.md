@@ -69,12 +69,7 @@ DB_NAME=cleaning_service_db
 JWT_SECRET=your_jwt_secret_key
 ```
 
-Run database migrations (if applicable, based on your ORM setup):
-```bash
-# This step depends on your specific ORM setup.
-# If you're using Sequelize with migrations, you might run something like:
-# npx sequelize db:migrate
-```
+
 
 Start the backend server:
 ```bash
@@ -109,5 +104,3 @@ The frontend application will typically open in your browser at `http://localhos
 ## License
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-## Contact
-For any questions or feedback, please contact [Your Name/Email/GitHub Profile].
